@@ -15,7 +15,7 @@ class TaskList extends Component {
   }
 
   fetchTasks = () => {
-    fetch("https://nagano-task-manager.herokuapp.com/tasks")
+    fetch("https://cors-anywhere.herokuapp.com/https://nagano-task-manager.herokuapp.com/tasks")
       .then((res) => res.json())
       .then((data) => this.setState({ tasks: data }));
   };
