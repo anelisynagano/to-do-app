@@ -25,7 +25,10 @@ class TaskList extends Component {
     fetch("https://nagano-task-manager.herokuapp.com/tasks", {
       method: "POST",
       body: JSON.stringify(taskInfo),
-      headers: { "Content-type": "application/json" },
+      headers: {
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
     })
       .then((response) => response.json())
       .then((data) => this.setState({ tasks: [...this.state.tasks, data] }));
