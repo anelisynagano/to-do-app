@@ -22,12 +22,11 @@ class TaskList extends Component {
 
   addTask = (e, taskInfo) => {
     e.preventDefault();
-    fetch("https://nagano-task-manager.herokuapp.com/tasks", {
+    fetch("https://cors-anywhere.herokuapp.com/https://nagano-task-manager.herokuapp.com/tasks", {
       method: "POST",
       body: JSON.stringify(taskInfo),
       headers: {
         "Content-type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
     })
       .then((response) => response.json())
