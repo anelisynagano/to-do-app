@@ -15,14 +15,14 @@ class TaskList extends Component {
   }
 
   fetchTasks = () => {
-    fetch("https://cors-anywhere.herokuapp.com/https://nagano-task-manager.herokuapp.com/tasks")
+    fetch("https://nagano-task-manager.herokuapp.com/tasks")
       .then((res) => res.json())
       .then((data) => this.setState({ tasks: data }));
   };
 
   addTask = (e, taskInfo) => {
     e.preventDefault();
-    fetch("https://cors-anywhere.herokuapp.com/https://nagano-task-manager.herokuapp.com/tasks", {
+    fetch("https://nagano-task-manager.herokuapp.com/tasks", {
       method: "POST",
       body: JSON.stringify(taskInfo),
       headers: {
