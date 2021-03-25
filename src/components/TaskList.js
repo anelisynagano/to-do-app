@@ -15,20 +15,25 @@ class TaskList extends Component {
   }
 
   fetchTasks = () => {
-    fetch("https://nagano-task-manager.herokuapp.com/tasks")
+    fetch(
+      "https://lit-escarpment-01617.herokuapp.com/https://nagano-task-manager.herokuapp.com/tasks"
+    )
       .then((res) => res.json())
       .then((data) => this.setState({ tasks: data }));
   };
 
   addTask = (e, taskInfo) => {
     e.preventDefault();
-    fetch("https://nagano-task-manager.herokuapp.com/tasks", {
-      method: "POST",
-      body: JSON.stringify(taskInfo),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
+    fetch(
+      "https://lit-escarpment-01617.herokuapp.com/https://nagano-task-manager.herokuapp.com/tasks",
+      {
+        method: "POST",
+        body: JSON.stringify(taskInfo),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((data) => this.setState({ tasks: [...this.state.tasks, data] }));
     this.setState({ description: "" });
@@ -39,21 +44,27 @@ class TaskList extends Component {
       description: editedTask.description,
       completed: editedTask.completed,
     };
-    fetch(`https://nagano-task-manager.herokuapp.com/tasks/${editedTask._id}`, {
-      method: "PUT",
-      body: JSON.stringify(taskObj),
-      headers: { "Content-type": "application/json" },
-    });
+    fetch(
+      `https://lit-escarpment-01617.herokuapp.com/https://nagano-task-manager.herokuapp.com/tasks/${editedTask._id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(taskObj),
+        headers: { "Content-type": "application/json" },
+      }
+    );
   };
 
   deleteTask = (deletedTaskId) => {
     console.log(deletedTaskId);
     const id = { id: deletedTaskId };
-    fetch(`https://nagano-task-manager.herokuapp.com/tasks/${deletedTaskId}`, {
-      method: "DELETE",
-      body: JSON.stringify(id),
-      headers: { "Content-type": "application/json" },
-    });
+    fetch(
+      `https://lit-escarpment-01617.herokuapp.com/https://nagano-task-manager.herokuapp.com/tasks/${deletedTaskId}`,
+      {
+        method: "DELETE",
+        body: JSON.stringify(id),
+        headers: { "Content-type": "application/json" },
+      }
+    );
     this.setState({
       tasks: this.state.tasks.filter((task) => task._id !== deletedTaskId),
     });
